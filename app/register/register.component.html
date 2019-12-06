@@ -1,0 +1,146 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-8 col-xs-10 offset-lg-4 offset-md-3 offset-sm-2 offset-xs-1">
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                <fieldset>
+                        <h3 style="text-align: center; color:green" class="top-field">Sign up</h3>
+                        <div class="form-group input-icons top-field">
+                            <i class="fa fa-user icon"></i>
+                            <input 
+                            type="text" 
+                            name="ngoid" 
+                            id="ngoid" 
+                            class="form-control input-field"
+                            placeholder="Ngo id"
+                            ngModel
+                            required
+                            #ngoid="ngModel">
+                            <small class="form-text" *ngIf="!ngoid.valid && ngoid.touched">Please enter your NGO ID</small>
+                        </div>
+                        <div class="form-group input-icons top-field">
+                            <i class="fa fa-user icon"></i>
+                            <input 
+                            type="text" 
+                            name="fullname" 
+                            id="fullname" 
+                            class="form-control input-field"
+                            placeholder="Ngo Name"
+                            ngModel
+                            required
+                            #fullname="ngModel">
+                            <small class="form-text" *ngIf="!fullname.valid && fullname.touched">Please enter your Certified NGO Name</small>
+                        </div>
+                        <div class="form-group input-icons top-field">
+                            <i class="fa fa-user icon"></i>
+                            <input 
+                            type="text" 
+                            name="ngo_location" 
+                            id="ngo_location" 
+                            class="form-control input-field"
+                            placeholder="Ngo Location"
+                            ngModel
+                            required
+                            #ngo_location="ngModel">
+                            <small class="form-text" *ngIf="!ngo_location.valid && ngo_location.touched">Please enter your Certified NGO Location</small>
+                        </div>
+                        <div class="form-group input-icons">
+                                <i class="fa fa-user icon"></i>
+                                <input 
+                                type="text" 
+                                name="username" 
+                                id="username" 
+                                class="form-control input-field"
+                                placeholder="User Name"
+                                ngModel
+                                required
+                                #username="ngModel">
+                                <small class="form-text" *ngIf="!username.valid && username.touched">Please enter your User Name</small>
+                            </div>
+                            <div class="form-group input-icons">
+                                    <i class="fa fa-envelope icon"></i>
+                                    <input 
+                                    type="email" 
+                                    name="email" 
+                                    id="email" 
+                                    class="form-control input-field"
+                                    placeholder="Email"
+                                    ngModel
+                                    required
+                                    email
+                                    #email="ngModel">
+                                    <small class="form-text" *ngIf="!email.valid && email.touched">Please enter your Email</small>
+                                </div>
+                            <div class="form-group input-icons">
+                                <i class="fa fa-unlock icon"></i>
+                                <input 
+                                type="password" 
+                                name="password" 
+                                id="password" 
+                                class="form-control input-field"
+                                placeholder="Password"
+                                ngModel
+                                required
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$"
+                                #password="ngModel">
+                                <small class="form-text text-muted">*Atleast one uppercase, onelowercase, one digit</small>
+                                <small class="form-text text-muted">and one special character</small>
+                                <small class="form-text" *ngIf="!password.valid && password.touched">Please enter your Password</small>
+                            </div>
+                            <div class="form-group input-icons">
+                                    <i class="fa fa-unlock icon"></i>
+                                    <input 
+                                    type="password" 
+                                    name="confirm_password" 
+                                    id="confirm_password" 
+                                    class="form-control input-field"
+                                    placeholder="Confirm Password"
+                                    ngModel
+                                    required
+                                    #confirm_password="ngModel">
+                                    <small class="form-text" *ngIf="!confirm_password.valid && confirm_password.touched">Please re-enter your Password</small>
+                                    <small class="form-text" *ngIf="confirm_password.value != password.value && confirm_password.touched">Password does not match</small>
+                                </div>    
+                            <div class="form-group input-icons"ng-class="{'has-error': registration.phone.$error.number}">
+                                    <i class="fa fa-mobile icon"></i>
+                                    <input 
+                                    type="number" 
+                                    name="phonenumber" 
+                                    id="phonenumber" 
+                                    class="form-control input-field"
+                                    placeholder="Mobile Number"
+                                    required
+                                    ngModel
+                                    ng-minlength = "10"
+                                    ng-maxlength = "10"
+                                    ng-required="true"
+                                    onkeydown="return (event.keyCode !== 69) 
+                                    && 
+                                    (event.keyCode !== 189)
+                                    &&
+                                    (event.keyCode !== 187)
+                                    &&
+                                    (event.keyCode !== 190)"
+                                    #phonenumber="ngModel"
+                                    pattern="/^[6-9]\d{9}$/">
+                                    <small class="help-block" 
+                                        ng-show="f.phonenumber.$error.required || 
+                                            phonenumber.$error.number">
+                                            Valid phone number is required
+                                    </small>
+                                    <small class="help-block" 
+                                        ng-show="((f.phonenumber.$error.minlength ||
+                                            f.phonenumber.$error.maxlength) && 
+                                            f.phonenumber.$dirty) ">
+                                        phone number should be 10 digits
+                                    </small>
+                                </div>
+                            <button 
+                            type="submit" 
+                            class="btn btn-success col-sm-4 offset-sm-4 bottom-button"
+                            [disabled]="!f.valid">Sign up</button>    
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
